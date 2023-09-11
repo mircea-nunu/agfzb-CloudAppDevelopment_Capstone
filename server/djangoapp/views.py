@@ -82,16 +82,22 @@ def registration_request(request):
 # Update the `get_dealerships` view to render the index page with a list of dealerships
 def get_dealerships(request):
     context = {}
+    url = "https://eu-de.functions.appdomain.cloud/api/v1/web/e99abf15-8841-4599-9c48-d05a8fe571c5/dealership-package/get-dealership"
     # if request.method == "GET":
     #     return render(request, 'djangoapp/index.html', context)
-    if request.method == "GET":
-        url = "your-cloud-function-domain/dealerships/dealer-get"
-        # Get dealers from the URL
-        dealerships = get_dealers_from_cf(url)
-        # Concat all dealer's short name
-        dealer_names = ' '.join([dealer.short_name for dealer in dealerships])
-        # Return a list of dealer short name
-        return HttpResponse(dealer_names)
+    # Get dealers from the URL
+    context = {"dealerships": get_dealers_from_cf(url)}
+    # Concat all dealer's short name
+    # Return a list of dealer short name
+    return render(request, 'djangoapp/index.html', context)
+    # if request.method == "GET":
+    #     url = "https://eu-de.functions.appdomain.cloud/api/v1/web/e99abf15-8841-4599-9c48-d05a8fe571c5/dealership-package/get-dealership"
+    #     # Get dealers from the URL
+    #     dealerships = get_dealers_from_cf(url)
+    #     # Concat all dealer's short name
+    #     dealer_names = ' '.join([dealer.short_name for dealer in dealerships])
+    #     # Return a list of dealer short name
+    #     return HttpResponse(dealer_names)
 
 
 # Create a `get_dealer_details` view to render the reviews of a dealer
