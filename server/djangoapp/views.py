@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
 # from .models import related models
 # from .restapis import related methods
-from .restapis import get_dealers_from_cf
+from .restapis import get_dealers_from_cf, get_dealer_by_id_from_cf, get_dealer_reviews_from_cf
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from datetime import datetime
@@ -106,7 +106,7 @@ def get_dealer_details(request, dealer_id):
     context = {}
     if request.method == "GET":
         url = 'https://eu-de.functions.appdomain.cloud/api/v1/web/e99abf15-8841-4599-9c48-d05a8fe571c5/dealership-package/get-review'
-        context = {"reviews":  restapis.get_dealer_reviews_by_id_from_cf(url, dealer_id)}
+        context = {"reviews":  get_dealer_reviews_from_cf(url, dealer_id)}
         return render(request, 'djangoapp/dealer_details.html', context)
 
 # Create a `add_review` view to submit a review
