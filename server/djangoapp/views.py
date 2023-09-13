@@ -147,7 +147,7 @@ def add_review(request, dealer_id):
             else: 
                 review["purchase_date"] = None
 
-            url = "https://9bebcb01.eu-de.apigw.appdomain.cloud/api/review"  # API Cloud Function route
+            url = "https://eu-de.functions.cloud.ibm.com/api/v1/namespaces/e99abf15-8841-4599-9c48-d05a8fe571c5/actions/dealership-package/get-review"  # API Cloud Function route
             json_payload = {"review": review}  # Create a JSON payload that contains the review data
 
             # Performing a POST request with the review

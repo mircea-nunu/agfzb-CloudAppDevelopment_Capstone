@@ -98,7 +98,8 @@ def get_dealer_reviews_from_cf(url, dealer_id):
 
     if json_result:
         # Get all review data from the response
-        reviews = json_result["body"]["data"]["docs"]
+        #reviews = json_result["body"]["data"]["docs"]
+        reviews = json_result["data"]["docs"]
         # For every review in the response
         for review in reviews:
             # Create a DealerReview object from the data
