@@ -142,6 +142,7 @@ def get_dealer_reviews_from_cf(url, dealer_id):
 # - Call get_request() with specified arguments
 # - Get the returned sentiment label such as Positive or Negative
 def analyze_review_sentiments(review_text):
+    '''analyze_review_sentiments'''
     # Watson NLU configuration
     try:
         if os.environ['env_type'] == 'PRODUCTION':
