@@ -148,11 +148,12 @@ def add_review(request, dealer_id):
             
             # If the user bought the car, get the purchase date
             if form.get("purchasecheck"):
+                print(form.get("purchasedate"))
                 review["purchase_date"] = datetime.strptime(form.get("purchasedate"), "%m/%d/%Y").isoformat()
             else: 
                 review["purchase_date"] = None
 
-            url = "https://eu-de.functions.cloud.ibm.com/api/v1/namespaces/e99abf15-8841-4599-9c48-d05a8fe571c5/actions/dealership-package/get-review"  # API Cloud Function route
+            url = "https://eu-de.functions.appdomain.cloud/api/v1/web/e99abf15-8841-4599-9c48-d05a8fe571c5/dealership-package/post-review"  # API Cloud Function route
             json_payload = {"review": review}  # Create a JSON payload that contains the review data
 
             # Performing a POST request with the review
