@@ -27,9 +27,21 @@ DEBUG = True
 
 APPEND_SLASH = True
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = [
+    "localhost",
+    'http://localhost:8000',
+    'https://admin1234560-8000.theiadocker-2-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
+]
 
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8000',
+    'https://admin1234560-8000.theiadocker-2-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
+]
 
+CSRF_TRUSTED_ORIGINS = [
+    'localhost:8000',
+    'admin1234560-8000.theiadocker-2-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
+]
 # Application definition
 
 INSTALLED_APPS = [
